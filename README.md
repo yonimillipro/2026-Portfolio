@@ -1,5 +1,29 @@
-# Portfolio
+# Yonathan Million — Portfolio
 
-I've created a stunning modern portfolio website for Yonathan Million using the latest 2025 web technologies. The site features beautiful animations powered by Framer Motion, a sleek dark theme with gradient accents, and responsive design that looks perfect on all devices. Key highlights include dynamic typing animations in the hero section, smooth scroll-triggered animations throughout, interactive project showcases, and animated skill progress bars. The entire site is built with React 19, TypeScript, and Tailwind CSS for optimal performance and maintainability.
+An editorial portfolio for Yonathan Million, a frontend engineer, product builder, and IT Officer / Website Developer based in Addis Ababa, Ethiopia.
 
-![Image](https://github.com/user-attachments/assets/fd720294-dcfd-430b-a924-e25a5d48dc4b)
+The site presents current product work including ServiceLink, GiveawayFair, and Dr. Saba Medium Clinic, alongside experience, practical capability areas, and a direct contact path. The interface is responsive, keyboard accessible, theme-aware, and built around real project evidence rather than skill percentages or placeholder case studies.
+
+## Stack
+
+- React 18 and TypeScript
+- Vite
+- GSAP + ScrollTrigger for scroll choreography and hover interactions
+- Three.js for a lightweight, lazy-loaded hero scene
+- Reduced-motion and mobile performance fallbacks
+- Custom responsive CSS
+- EmailJS contact form
+
+## Local development
+
+```bash
+npm install
+npm run dev
+```
+
+Quality checks:
+
+```bash
+npm run lint
+npm run build
+```

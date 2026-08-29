@@ -1,107 +1,54 @@
-import { useState, useEffect } from "react";
-import Header from "./components/Header.tsx";
-import Hero from "./components/Hero.tsx";
-import About from "./components/About.tsx";
-import Skills from "./components/Skills.tsx";
-import Projects from "./components/Projects.tsx";
-import Contact from "./components/Contact.tsx";
-import Footer from "./components/Footer.tsx";
+import { useEffect, useState } from "react";
+import portraitUrl from "../pro5.png";
+import resumeUrl from "../Yonathan_CV.pdf";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import Projects from "./components/Projects";
+import Experience from "./components/Experience";
+import Capabilities from "./components/Capabilities";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import MotionController from "./components/MotionController";
 
-function App() {
-  const [darkMode, setDarkMode] = useState(true);
+type Theme = "light" | "dark";
 
-  // useEffect to remove the hash (#section) from the URL and scroll to the top
-  useEffect(() => {
-    // 1. Check if a hash fragment exists in the URL
-    if (window.location.hash) {
-      // Remove the hash from the URL history without reloading the page
-      window.history.replaceState(null, "", window.location.pathname);
-    }
-
-    // 2. Explicitly scroll the window to the top (x: 0, y: 0)
-    window.scrollTo(0, 0);
-  }, []); // Run only once after the initial render
-
-  useEffect(() => {
-    // Theme loading logic
-    const savedTheme = localStorage.getItem("darkMode");
-    if (savedTheme !== null) {
-      setDarkMode(JSON.parse(savedTheme));
-    } else {
-      // Set default to dark mode if no saved preference
-      setDarkMode(true);
-      localStorage.setItem("darkMode", JSON.stringify(true));
-    }
-  }, []);
-
-  const toggleDarkMode = () => {
-    const newDarkMode = !darkMode;
-    setDarkMode(newDarkMode);
-    localStorage.setItem("darkMode", JSON.stringify(newDarkMode));
-  };
-
-  return (
-    <div
-      className={`transition-colors duration-300 ${
-        darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
-      }`}
-    >
-      <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <Hero darkMode={darkMode} />
-      <About darkMode={darkMode} />
-      <Skills darkMode={darkMode} />
-      <Projects darkMode={darkMode} />
-      <Contact darkMode={darkMode} />
-      <Footer darkMode={darkMode} />
-    </div>
-  );
+function getInitialTheme(): Theme {
+  const storedTheme = window.localStorage.getItem("yonathan-portfolio-theme");
+  if (storedTheme === "light" || storedTheme === "dark") return storedTheme;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
-export default App;
-// import { useState, useEffect } from "react";
-// import Header from "./components/Header";
-// import Hero from "./components/Hero";
-// import About from "./components/About";
-// import Skills from "./components/Skills";
-// import Projects from "./components/Projects";
-// import Contact from "./components/Contact";
-// import Footer from "./components/Footer";
+export default function App() {
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
-// function App() {
-//   const [darkMode, setDarkMode] = useState(true);
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+    window.localStorage.setItem("yonathan-portfolio-theme", theme);
+  }, [theme]);
 
-//   useEffect(() => {
-//     const savedTheme = localStorage.getItem("darkMode");
-//     if (savedTheme !== null) {
-//       setDarkMode(JSON.parse(savedTheme));
-//     } else {
-//       // Set default to dark mode if no saved preference
-//       setDarkMode(true);
-//       localStorage.setItem("darkMode", JSON.stringify(true));
-//     }
-//   }, []);
-
-//   const toggleDarkMode = () => {
-//     const newDarkMode = !darkMode;
-//     setDarkMode(newDarkMode);
-//     localStorage.setItem("darkMode", JSON.stringify(newDarkMode));
-//   };
-
-//   return (
-//     <div
-//       className={`transition-colors duration-300 ${
-//         darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
-//       }`}
-//     >
-//       <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-//       <Hero darkMode={darkMode} />
-//       <About darkMode={darkMode} />
-//       <Skills darkMode={darkMode} />
-//       <Projects darkMode={darkMode} />
-//       <Contact darkMode={darkMode} />
-//       <Footer darkMode={darkMode} />
-//     </div>
-//   );
-// }
-
-// export default App;
+  return (
+    <>
+      <MotionController />
+      <a className="skip-link" href="#main-content">
+        Skip to main content
+      </a>
+      <div className="site-shell">
+        <Header
+          theme={theme}
+          onToggleTheme={() => setTheme((current) => (current === "light" ? "dark" : "light"))}
+        />
+        <main id="main-content">
+          <Hero portraitUrl={portraitUrl} resumeUrl={resumeUrl} />
+          <Projects />
+          <Experience />
+          <Capabilities />
+          <About />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </>
+  );
+}
