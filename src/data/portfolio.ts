@@ -37,6 +37,7 @@ export const projects: Project[] = [
     contribution:
       "Built Supabase authentication, CoinGecko-powered market views, buy and sell workflows, wallet management, and Chapa subscription payments.",
     stack: ["React", "Vite", "Tailwind CSS", "Supabase", "CoinGecko"],
+    live: "https://crypto-coinza-dashboard.vercel.app/",
     repository: "https://github.com/yonimillipro/crypto-CoinzaDashboard",
     tone: "lime",
   },
@@ -50,6 +51,7 @@ export const projects: Project[] = [
     contribution:
       "Building the responsive product experience with multi-role accounts, ownership safeguards, and a Supabase-backed content model.",
     stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Supabase"],
+    live: "https://giveaway-fair.vercel.app/",
     repository: "https://github.com/yonimillipro/giveaway-fair",
     tone: "violet",
   },
