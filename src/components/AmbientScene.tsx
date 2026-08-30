@@ -10,19 +10,20 @@ export default function AmbientScene() {
 
     const wrapper = canvas.parentElement;
     if (!wrapper) return;
+    const compactScene = window.matchMedia("(max-width: 767px)").matches;
 
     const renderer = new THREE.WebGLRenderer({
       canvas,
       alpha: true,
-      antialias: true,
+      antialias: !compactScene,
       powerPreference: "high-performance",
     });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, compactScene ? 1.1 : 1.5));
     renderer.outputColorSpace = THREE.SRGBColorSpace;
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
-    camera.position.set(0, 0, 6.2);
+    camera.position.set(0, 0, compactScene ? 6.8 : 6.2);
 
     const group = new THREE.Group();
     group.rotation.set(-0.2, -0.35, 0.06);
@@ -37,7 +38,7 @@ export default function AmbientScene() {
     };
 
     const initialColors = readColors();
-    const shellGeometry = new THREE.IcosahedronGeometry(1.55, 2);
+    const shellGeometry = new THREE.IcosahedronGeometry(1.55, compactScene ? 1 : 2);
     const shellMaterial = new THREE.MeshBasicMaterial({
       color: initialColors.accent,
       wireframe: true,
@@ -47,7 +48,14 @@ export default function AmbientScene() {
     const shell = new THREE.Mesh(shellGeometry, shellMaterial);
     group.add(shell);
 
-    const coreGeometry = new THREE.TorusKnotGeometry(0.72, 0.16, 96, 10, 2, 3);
+    const coreGeometry = new THREE.TorusKnotGeometry(
+      0.72,
+      0.16,
+      compactScene ? 56 : 96,
+      compactScene ? 7 : 10,
+      2,
+      3,
+    );
     const coreMaterial = new THREE.MeshBasicMaterial({
       color: initialColors.ink,
       wireframe: true,
@@ -57,7 +65,7 @@ export default function AmbientScene() {
     const core = new THREE.Mesh(coreGeometry, coreMaterial);
     group.add(core);
 
-    const pointCount = 120;
+    const pointCount = compactScene ? 48 : 120;
     const positions = new Float32Array(pointCount * 3);
     for (let index = 0; index < pointCount; index += 1) {
       const radius = 2.15 + Math.random() * 0.75;

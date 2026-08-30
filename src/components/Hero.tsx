@@ -12,16 +12,13 @@ export default function Hero({ portraitUrl, resumeUrl }: HeroProps) {
   const [showEnhancedScene, setShowEnhancedScene] = useState(false);
 
   useEffect(() => {
-    const desktop = window.matchMedia("(min-width: 768px)");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const updateScene = () => setShowEnhancedScene(desktop.matches && !reducedMotion.matches);
+    const updateScene = () => setShowEnhancedScene(!reducedMotion.matches);
 
     updateScene();
-    desktop.addEventListener("change", updateScene);
     reducedMotion.addEventListener("change", updateScene);
 
     return () => {
-      desktop.removeEventListener("change", updateScene);
       reducedMotion.removeEventListener("change", updateScene);
     };
   }, []);
@@ -80,6 +77,11 @@ export default function Hero({ portraitUrl, resumeUrl }: HeroProps) {
             <span>Frontend developer</span>
             <span>IT officer</span>
           </div>
+        </div>
+        <div className="mobile-focus-panel">
+          <span className="mobile-focus-label">Current focus</span>
+          <strong>Building ServiceLink and improving clinic systems.</strong>
+          <span className="mobile-focus-stack">React · TypeScript · Product operations</span>
         </div>
         <div className="profile-links">
           <a href="https://github.com/yonimillipro" target="_blank" rel="noreferrer" data-magnetic>

@@ -13,32 +13,6 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    name: "ServiceLink",
-    type: "Service marketplace",
-    period: "2026 — Now",
-    status: "Active product",
-    summary:
-      "A multi-sided marketplace that helps customers find local providers and gives providers a focused workspace for managing their services.",
-    contribution:
-      "Designing and building the product across customer, provider, and admin journeys, with live marketplace data and role-aware experiences.",
-    stack: ["React", "TypeScript", "Supabase", "Responsive UI"],
-    repository: "https://github.com/yonimillipro/servicelink-hub",
-    live: "https://servicelink-hub.vercel.app/",
-    tone: "lime",
-  },
-  {
-    name: "GiveawayFair",
-    type: "Community commerce",
-    period: "2026 — Now",
-    status: "Private build",
-    summary:
-      "A web and mobile giveaway ecosystem where people discover promotions while companies manage branded pages, products, and campaigns.",
-    contribution:
-      "Building the PWA and Expo mobile experience, including multi-role accounts, ownership safeguards, and a Supabase-backed content model.",
-    stack: ["Expo", "React Native", "TypeScript", "Supabase"],
-    tone: "violet",
-  },
-  {
     name: "Dr. Saba Medium Clinic",
     type: "Healthcare website",
     period: "2025 — Now",
@@ -54,6 +28,44 @@ export const projects: Project[] = [
     tone: "blue",
   },
   {
+    name: "Coinza Dashboard",
+    type: "Crypto portfolio dashboard",
+    period: "2026 — Now",
+    status: "Public repository",
+    summary:
+      "A crypto portfolio dashboard with account access, live market data, wallet tools, trading flows, and a subscription experience.",
+    contribution:
+      "Built Supabase authentication, CoinGecko-powered market views, buy and sell workflows, wallet management, and Chapa subscription payments.",
+    stack: ["React", "Vite", "Tailwind CSS", "Supabase", "CoinGecko"],
+    repository: "https://github.com/yonimillipro/crypto-CoinzaDashboard",
+    tone: "lime",
+  },
+  {
+    name: "Giveaway Fair",
+    type: "Community commerce",
+    period: "2026 — Now",
+    status: "Public repository",
+    summary:
+      "A web and mobile giveaway ecosystem where people discover promotions while companies manage branded pages, products, and campaigns.",
+    contribution:
+      "Building the responsive product experience with multi-role accounts, ownership safeguards, and a Supabase-backed content model.",
+    stack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Supabase"],
+    repository: "https://github.com/yonimillipro/giveaway-fair",
+    tone: "violet",
+  },
+  {
+    name: "ServiceLink + GiveawayConnect",
+    type: "Private product builds",
+    period: "2026 — Now",
+    status: "Private build",
+    summary:
+      "Two private product builds spanning a local service marketplace and a connected giveaway experience for customers, providers, and companies.",
+    contribution:
+      "Designing and building role-aware customer, provider, company, and admin workflows while keeping both repositories private.",
+    stack: ["React", "TypeScript", "Supabase", "Responsive UI"],
+    tone: "orange",
+  },
+  {
     name: "Hotel Reservation System",
     type: "Booking platform",
     period: "2023 — 2024",
@@ -64,7 +76,7 @@ export const projects: Project[] = [
       "Built the responsive interface and connected the booking flow to a PHP and MySQL backend as an end-to-end academic product.",
     stack: ["React", "PHP", "MySQL", "REST APIs"],
     repository: "https://github.com/yonimillipro/reservation",
-    tone: "orange",
+    tone: "blue",
   },
 ];
 
