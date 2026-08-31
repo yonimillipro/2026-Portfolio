@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { ArrowDownRight, ArrowUpRight, Download } from "lucide-react";
+import DynamicHeroText from "./DynamicHeroText";
 
 const AmbientScene = lazy(() => import("./AmbientScene"));
 
@@ -49,11 +50,14 @@ export default function Hero({ portraitUrl, resumeUrl }: HeroProps) {
         </h1>
 
         <div className="hero-bottom">
-          <p>
-            I’m Yonathan Million. I design and build useful web and mobile
-            products with React and TypeScript—and run the digital experience
-            at Dr. Saba Medium Clinic.
-          </p>
+          <div className="hero-intro">
+            <DynamicHeroText />
+            <p>
+              I’m Yonathan Million. I design and build useful web and mobile
+              products with React and TypeScript—and run the digital experience
+              at Dr. Saba Medium Clinic.
+            </p>
+          </div>
           <div className="button-row">
             <a className="button button-primary" href="#work" data-magnetic>
               Explore selected work <ArrowDownRight size={18} />

@@ -201,6 +201,56 @@ img { display: block; max-width: 100%; }
   justify-content: space-between;
   gap: 40px;
 }
+.hero-intro { display: grid; gap: 18px; }
+.hero-dynamic {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) 44px;
+  min-height: 46px;
+  align-items: center;
+  border-block: 1px solid var(--line);
+}
+.hero-dynamic-label {
+  padding-right: 14px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.hero-dynamic-viewport {
+  position: relative;
+  display: block;
+  min-width: 0;
+  height: 1.35em;
+  overflow: hidden;
+  color: var(--accent);
+  font-family: "Archivo", sans-serif;
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  font-weight: 780;
+  line-height: 1.35;
+}
+.hero-dynamic-word {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hero-dynamic-control {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-left: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+.hero-dynamic-control:hover { background: var(--accent); color: var(--accent-ink); }
+.hero-dynamic-control:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }
 .hero-bottom p { margin: 0; font-size: clamp(1rem, 1.25vw, 1.3rem); line-height: 1.55; }
 .button-row { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
 .button {
