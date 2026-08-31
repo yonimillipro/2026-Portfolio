@@ -44,15 +44,15 @@ export default function DynamicHeroText() {
 
         timeline
           .to({}, { duration: 2.35 })
+          .set(nextWord, { autoAlpha: 0, yPercent: 70 })
           .to(word, {
             autoAlpha: 0,
             yPercent: -70,
             duration: 0.28,
             ease: "power2.in",
           })
-          .fromTo(
+          .to(
             nextWord,
-            { autoAlpha: 0, yPercent: 70 },
             {
               autoAlpha: 1,
               yPercent: 0,
