@@ -9,6 +9,14 @@ export default function MotionController() {
       const media = gsap.matchMedia();
 
       media.add("(prefers-reduced-motion: no-preference)", () => {
+        const sectionMotion = [
+          { selector: "#work", layers: [".section-heading", ".project-list"] },
+          { selector: "#experience", layers: [".section-heading", ".experience-list"] },
+          { selector: "#capabilities", layers: [".section-heading", ".capability-grid"] },
+          { selector: "#about", layers: [".about-label", ".about-copy"] },
+          { selector: "#contact", layers: [".contact-intro", ".contact-form"] },
+        ];
+
         const heroTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
         heroTimeline
           .from(".hero-meta", { autoAlpha: 0, y: -12, duration: 0.45 })
@@ -38,31 +46,85 @@ export default function MotionController() {
           },
         });
 
-        gsap.utils.toArray<HTMLElement>(".section-heading").forEach((heading) => {
-          const title = heading.querySelector("h2");
-          const label = heading.querySelector("p");
-          gsap.from([label, title], {
-            autoAlpha: 0,
-            y: 18,
-            duration: 0.52,
-            stagger: 0.07,
-            ease: "power2.out",
-            scrollTrigger: { trigger: heading, start: "top 84%", once: true },
+        const heroScene = document.querySelector<HTMLElement>(".hero-scene");
+        if (heroScene) {
+          gsap.to(heroScene, {
+            yPercent: -6,
+            ease: "none",
+            scrollTrigger: {
+              trigger: ".hero",
+              start: "top top",
+              end: "bottom top",
+              scrub: 0.7,
+            },
+          });
+        }
+
+        const pageSections = [document.querySelector<HTMLElement>(".hero")];
+
+        sectionMotion.forEach(({ selector, layers }, sectionIndex) => {
+          const section = document.querySelector<HTMLElement>(selector);
+          if (!section) return;
+
+          pageSections.push(section);
+          const direction = sectionIndex % 2 === 0 ? 1 : -1;
+
+          layers.forEach((layerSelector, layerIndex) => {
+            const layer = section.querySelector<HTMLElement>(layerSelector);
+            if (!layer) return;
+
+            const horizontalOffset = direction * (layerIndex === 0 ? 14 : -10);
+
+            gsap.fromTo(
+              layer,
+              {
+                autoAlpha: 0.22,
+                x: horizontalOffset,
+                y: layerIndex === 0 ? 12 : 22,
+              },
+              {
+                autoAlpha: 1,
+                x: 0,
+                y: 0,
+                ease: "none",
+                force3D: true,
+                scrollTrigger: {
+                  trigger: section,
+                  start: `top ${94 - layerIndex * 2}%`,
+                  end: `top ${62 - layerIndex * 2}%`,
+                  scrub: 0.4 + layerIndex * 0.15,
+                  invalidateOnRefresh: true,
+                },
+              },
+            );
           });
         });
 
+        pageSections.filter((section): section is HTMLElement => Boolean(section)).forEach(
+          (section, sectionIndex, sections) => {
+            const nextSection = sections[sectionIndex + 1];
+            if (!nextSection) return;
+
+            gsap.fromTo(
+              section,
+              { autoAlpha: 1 },
+              {
+                autoAlpha: 0.62,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: nextSection,
+                  start: "top bottom",
+                  end: "top 72%",
+                  scrub: 0.6,
+                  invalidateOnRefresh: true,
+                },
+              },
+            );
+          },
+        );
+
         gsap.utils.toArray<HTMLElement>(".project-row").forEach((row) => {
           const mark = row.querySelector(".project-mark");
-          const content = row.querySelectorAll(".project-intro, .project-detail, .project-actions");
-
-          gsap.from(content, {
-            autoAlpha: 0,
-            y: 20,
-            duration: 0.55,
-            stagger: 0.06,
-            ease: "power2.out",
-            scrollTrigger: { trigger: row, start: "top 82%", once: true },
-          });
 
           if (mark) {
             gsap.fromTo(
@@ -75,42 +137,6 @@ export default function MotionController() {
               },
             );
           }
-        });
-
-        gsap.from(".experience-row", {
-          autoAlpha: 0,
-          x: 18,
-          duration: 0.5,
-          stagger: 0.08,
-          ease: "power2.out",
-          scrollTrigger: { trigger: ".experience-list", start: "top 82%", once: true },
-        });
-
-        gsap.from(".capability-grid article", {
-          autoAlpha: 0,
-          y: 20,
-          duration: 0.5,
-          stagger: 0.07,
-          ease: "power2.out",
-          scrollTrigger: { trigger: ".capability-grid", start: "top 82%", once: true },
-        });
-
-        gsap.from(".about-copy > *", {
-          autoAlpha: 0,
-          y: 20,
-          duration: 0.55,
-          stagger: 0.08,
-          ease: "power2.out",
-          scrollTrigger: { trigger: ".about-copy", start: "top 78%", once: true },
-        });
-
-        gsap.from(".contact-intro > *, .contact-form > *", {
-          autoAlpha: 0,
-          y: 16,
-          duration: 0.5,
-          stagger: 0.045,
-          ease: "power2.out",
-          scrollTrigger: { trigger: ".contact-section", start: "top 72%", once: true },
         });
 
         ScrollTrigger.refresh();
