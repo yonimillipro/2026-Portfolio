@@ -44,18 +44,18 @@ export default function Hero({ portraitUrl, resumeUrl }: HeroProps) {
         </div>
 
         <h1 id="hero-title">
-          <span className="hero-title-line"><span>Frontend</span></span>
+          <span className="hero-title-line"><span>Software</span></span>
           <span className="hero-title-line accent-line"><span>engineer.</span></span>
-          <span className="hero-title-line"><span>Product builder.</span></span>
+          <span className="hero-title-line hero-platforms"><span>Web. Mobile. Desktop.</span></span>
         </h1>
 
         <div className="hero-bottom">
           <div className="hero-intro">
             <DynamicHeroText />
             <p>
-              I’m Yonathan Million. I design and build useful web and mobile
-              products with React and TypeScript—and run the digital experience
-              at Dr. Saba Medium Clinic.
+              I’m Yonathan Million. I build websites, mobile and desktop
+              applications, and the systems behind everyday workflows.
+              My work connects software development with practical healthcare IT.
             </p>
           </div>
           <div className="button-row">
@@ -78,14 +78,14 @@ export default function Hero({ portraitUrl, resumeUrl }: HeroProps) {
             height="1280"
           />
           <div className="portrait-caption">
-            <span>Frontend developer</span>
+            <span>Software engineer</span>
             <span>IT officer</span>
           </div>
         </div>
         <div className="mobile-focus-panel">
           <span className="mobile-focus-label">Current focus</span>
-          <strong>Building ServiceLink and improving clinic systems.</strong>
-          <span className="mobile-focus-stack">React · TypeScript · Product operations</span>
+          <strong>Mobile applications, Windows tools, and clinic systems.</strong>
+          <span className="mobile-focus-stack">Web · Mobile · Desktop</span>
         </div>
         <div className="profile-links">
           <a href="https://github.com/yonimillipro" target="_blank" rel="noreferrer" data-magnetic>

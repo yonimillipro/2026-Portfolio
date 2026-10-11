@@ -1,11 +1,11 @@
-import { capabilities } from "../data/portfolio";
+import { approach, capabilities } from "../data/portfolio";
 
 export default function Capabilities() {
   return (
     <section className="section" id="capabilities" aria-labelledby="capabilities-title">
       <div className="section-heading">
         <p>03 / Capabilities</p>
-        <h2 id="capabilities-title">A practical toolkit—not a wall of percentages.</h2>
+        <h2 id="capabilities-title">From the interface to the system behind it.</h2>
       </div>
 
       <div className="capability-grid">
@@ -21,6 +21,12 @@ export default function Capabilities() {
             </ul>
           </article>
         ))}
+      </div>
+      <div className="build-approach">
+        <h3>How I build</h3>
+        <ol>{approach.map((step) => (
+          <li key={step.title}><strong>{step.title}</strong><p>{step.detail}</p></li>
+        ))}</ol>
       </div>
     </section>
   );

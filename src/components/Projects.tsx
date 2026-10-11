@@ -39,23 +39,34 @@ export default function Projects() {
               </ul>
             </div>
 
-            <div className="project-actions" aria-label={`${project.name} links`}>
+            {project.live || project.repository ? (
+              <div className="project-actions" aria-label={`${project.name} links`}>
               {project.live ? (
                 <a href={project.live} target="_blank" rel="noreferrer" data-magnetic>
                   Live <ArrowUpRight size={17} />
                 </a>
-              ) : (
-                <span className="project-private">In development</span>
-              )}
+              ) : null}
               {project.repository ? (
                 <a href={project.repository} target="_blank" rel="noreferrer" data-magnetic>
-                  Code <Github size={16} />
+                  {project.repositoryLabel ?? "Code"} <Github size={16} />
                 </a>
               ) : null}
-            </div>
+              </div>
+            ) : null}
+            {project.caseStudy ? (
+              <details className="project-case-study">
+                <summary>Inside the build <span className="sr-only">— {project.name}</span></summary>
+                <div className="case-study-columns">
+                  <div><h4>The problem</h4><p>{project.caseStudy.problem}</p></div>
+                  <div><h4>The approach</h4><p>{project.caseStudy.approach}</p></div>
+                  <div><h4>Current stage</h4><p>{project.caseStudy.stage}</p></div>
+                </div>
+              </details>
+            ) : null}
           </article>
         ))}
       </div>
+      <p className="development-note">ServiceLink Mobile — In development.</p>
     </section>
   );
 }

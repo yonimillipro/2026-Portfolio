@@ -4,9 +4,10 @@ import gsap from "gsap";
 import { PauseCircle, PlayCircle } from "lucide-react";
 
 const focusItems = [
-  "Useful digital products.",
-  "Reliable clinic systems.",
-  "Clear web experiences.",
+  "Web experiences.",
+  "Mobile applications.",
+  "Windows applications.",
+  "Practical clinic systems.",
 ];
 
 export default function DynamicHeroText() {
@@ -88,7 +89,7 @@ export default function DynamicHeroText() {
         ))}
       </span>
       <span className="sr-only">
-        I build useful digital products, reliable clinic systems, and clear web experiences.
+        I build web experiences, mobile applications, Windows applications, and practical clinic systems.
       </span>
       {!prefersReducedMotion ? (
         <button

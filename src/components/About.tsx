@@ -13,9 +13,9 @@ export default function About() {
         </h2>
         <div className="about-columns">
           <p>
-            My strongest work sits in React, TypeScript, responsive UI, API integration,
-            and performance. I like turning complex product rules into experiences that
-            feel obvious to the people using them.
+            I work across React and TypeScript websites, React Native mobile apps,
+            Electron desktop tools, APIs, and relational data. I like turning complex
+            product rules into experiences that feel clear to the people using them.
           </p>
           <p>
             Today I work across healthcare IT and independent product development. That
