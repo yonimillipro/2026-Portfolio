@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import portraitUrl from "../pro5.png";
-import resumeUrl from "../Yonathan_CV.pdf";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
@@ -40,7 +39,7 @@ export default function App() {
           onToggleTheme={() => setTheme((current) => (current === "light" ? "dark" : "light"))}
         />
         <main id="main-content">
-          <Hero portraitUrl={portraitUrl} resumeUrl={resumeUrl} />
+          <Hero portraitUrl={portraitUrl} resumeUrl={`${import.meta.env.BASE_URL}Yonathans_CV.pdf`} />
           <Projects />
           <Experience />
           <Capabilities />
