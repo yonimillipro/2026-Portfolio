@@ -62,7 +62,7 @@ export default function Hero({ portraitUrl, resumeUrl }: HeroProps) {
             <a className="button button-primary" href="#work" data-magnetic>
               Explore selected work <ArrowDownRight size={18} />
             </a>
-            <a className="button button-secondary" href={resumeUrl} download data-magnetic>
+            <a className="button button-secondary" href={resumeUrl} download="Yonathan-Million-CV-2026.pdf" data-magnetic>
               Résumé <Download size={17} />
             </a>
           </div>
