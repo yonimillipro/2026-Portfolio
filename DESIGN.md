@@ -12,7 +12,7 @@ Exports are resized from the approved artwork without redrawing the initials. Th
 
 ## Runtime token ownership
 
-`src/index.css` remains the canonical theme source. The logo's graphite `#252b30` and silver `#d4dbdf` map to `--accent` / `--accent-ink`, reversed in dark mode for legibility. The neutral page and surface colors support those brand colors. `Header` uses the canonical raster asset; `AmbientScene` consumes the existing theme variables. Project-specific category colors remain descriptive accents.
+`src/index.css` remains the canonical theme source. Preserve the original light palette (`--paper: #f4f3ed`, `--ink: #11110f`, `--accent: #2454ff`) and dark palette (`--paper: #111210`, `--ink: #f4f3ed`, `--accent: #5475ff`). The graphite-and-silver palette belongs only to the approved logo artwork; do not apply it to the website themes. `Header` uses the canonical raster asset; `AmbientScene` consumes the original theme variables. Project-specific category colors remain descriptive accents.
 
 ## Typography and layout
 

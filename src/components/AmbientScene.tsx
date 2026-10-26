@@ -32,8 +32,8 @@ export default function AmbientScene() {
     const readColors = () => {
       const styles = getComputedStyle(document.documentElement);
       return {
-        accent: new THREE.Color(styles.getPropertyValue("--accent").trim() || "#252b30"),
-        ink: new THREE.Color(styles.getPropertyValue("--ink").trim() || "#252b30"),
+        accent: new THREE.Color(styles.getPropertyValue("--accent").trim() || "#2454ff"),
+        ink: new THREE.Color(styles.getPropertyValue("--ink").trim() || "#11110f"),
       };
     };
 

@@ -1,15 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 
 :root {
-  --paper: #eef0f1;
-  --surface: #f9fafb;
-  --ink: #252b30;
-  --muted: #59636b;
-  --line: #c7cdd1;
-  --strong-line: #252b30;
-  --accent: #252b30;
-  --accent-ink: #d4dbdf;
-  --header: rgba(238, 240, 241, 0.92);
+  --paper: #f4f3ed;
+  --surface: #fbfaf5;
+  --ink: #11110f;
+  --muted: #65645f;
+  --line: #c9c7bf;
+  --strong-line: #11110f;
+  --accent: #2454ff;
+  --accent-ink: #ffffff;
+  --header: rgba(244, 243, 237, 0.92);
   font-family: "Space Grotesk", system-ui, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -17,15 +17,15 @@
 }
 
 :root[data-theme="dark"] {
-  --paper: #20262b;
-  --surface: #2b3238;
-  --ink: #d4dbdf;
-  --muted: #aab5bd;
-  --line: #4b565f;
-  --strong-line: #d4dbdf;
-  --accent: #d4dbdf;
-  --accent-ink: #252b30;
-  --header: rgba(32, 38, 43, 0.92);
+  --paper: #111210;
+  --surface: #171816;
+  --ink: #f4f3ed;
+  --muted: #a7a69e;
+  --line: #3d3e39;
+  --strong-line: #f4f3ed;
+  --accent: #5475ff;
+  --accent-ink: #090a09;
+  --header: rgba(17, 18, 16, 0.92);
 }
 
 * { box-sizing: border-box; }
