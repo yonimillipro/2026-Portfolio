@@ -20,7 +20,7 @@ export default function Header({ theme, onToggleTheme }: HeaderProps) {
   return (
     <header className="site-header">
       <a className="brand" href="#top" aria-label="Yonathan Million, home">
-        YM<span aria-hidden="true">.</span>
+        <img src="/brand/logo.png" width="64" height="64" alt="Yonathan Million — YM" />
       </a>
 
       <nav className="desktop-nav" aria-label="Primary navigation">
